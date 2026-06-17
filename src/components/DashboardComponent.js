@@ -213,8 +213,8 @@ function DashboardComponent() {
                         { label: "Fats 🥑", value: displayTotals.fats, target: targets.fats, color: colors.success },
                         { label: "Fiber 🥦", value: displayTotals.fiber, target: targets.fiber, color: colors.ai }
                     ].map((macro) => (
-                        <div key={macro.label} style={{ background: "#FAFAFA", padding: "20px", borderRadius: "16px", border: "1px solid #F3F4F6", display: "flex", flexDirection: "column", justifycontent: "space-between" }}>
-                            <div style={{ display: "flex", justifycontent: "space-between", alignItems: "flex-start" }}>
+                        <div key={macro.label} style={{ background: "#FAFAFA", padding: "20px", borderRadius: "16px", border: "1px solid #F3F4F6", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                                 <span style={{ fontSize: "14px", fontWeight: "700", color: colors.textMain }}>{macro.label.split(" ")[0]}</span>
                                 <span style={{ fontSize: "13px", color: colors.textMuted, fontWeight: "600" }}>{macro.value}g <span style={{ color: "#9CA3AF", fontWeight: "500" }}>/ {macro.target}g</span></span>
                             </div>
@@ -222,7 +222,7 @@ function DashboardComponent() {
                                 <div style={{ width: "100%", height: "8px", backgroundColor: "#E5E7EB", borderRadius: "4px", overflow: "hidden" }}>
                                     <div style={{ width: `${getPercent(macro.value, macro.target)}%`, height: "100%", backgroundColor: macro.color, borderRadius: "4px", transition: "width 0.4s" }}></div>
                                 </div>
-                                <div style={{ display: "flex", justifycontent: "space-between", alignItems: "center", marginTop: "8px" }}>
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "8px" }}>
                                     <span style={{ fontSize: "11px", fontWeight: "700", color: macro.color }}>{getPercent(macro.value, macro.target)}%</span>
                                     <span style={{ fontSize: "11px", color: "#9CA3AF", fontWeight: "600" }}>{Number(Math.max(0, macro.target - macro.value)).toFixed(1).replace(".0", "")}g left</span>
                                 </div>
@@ -235,7 +235,7 @@ function DashboardComponent() {
             <h3 style={{ fontSize: "18px", fontWeight: "800", marginBottom: "15px", paddingLeft: "4px", letterSpacing: "-0.01em" }}>Meals Overview</h3>
             {["BREAKFAST", "LUNCH", "DINNER", "SNACK"].map((slot) => (
                 <div key={slot} style={{ background: colors.cardBg, borderRadius: "16px", padding: isMobile ? "16px" : "24px", marginBottom: "20px", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.01), 0 2px 4px -1px rgba(0,0,0,0.01)", border: "1px solid #F3F4F6" }}>
-                    <div style={{ display: "flex", justifycontent: "space-between", alignItems: "center", borderBottom: meals[slot].length > 0 ? "1px solid #F3F4F6" : "none", paddingBottom: meals[slot].length > 0 ? "12px" : "0" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: meals[slot].length > 0 ? "1px solid #F3F4F6" : "none", paddingBottom: meals[slot].length > 0 ? "12px" : "0" }}>
                         <h4 style={{ margin: 0, fontSize: "15px", fontWeight: "700", textTransform: "capitalize" }}>{slot.toLowerCase()}</h4>
                         <button onClick={() => resetFormAndToggleSlot(slot)} style={{ padding: "6px 14px", backgroundColor: activeMealSlot === slot ? "#FEE2E2" : "#EEF2F6", color: activeMealSlot === slot ? colors.danger : colors.primary, border: "none", borderRadius: "20px", cursor: "pointer", fontWeight: "700", fontSize: "12px" }}>{activeMealSlot === slot ? "Close" : "+ Add Entry"}</button>
                     </div>
@@ -245,14 +245,14 @@ function DashboardComponent() {
                             activeMealSlot !== slot && <p style={{ fontSize: "13px", color: colors.textMuted, fontStyle: "italic", margin: "8px 0 0 0" }}>No food tracked for this slot.</p>
                         ) : (
                             meals[slot].map(item => (
-                                <div key={item.id} style={{ display: "flex", justifycontent: "space-between", alignItems: "center", padding: "12px 4px", borderBottom: "1px solid #F9FAFB", fontSize: "14px" }}>
+                                <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 4px", borderBottom: "1px solid #F9FAFB", fontSize: "14px" }}>
                                     <div style={{ maxWidth: "80%" }}>
                                         <span style={{ fontWeight: "600", color: colors.textMain, display: "block" }}>{item.name}</span>
                                         <div style={{ color: colors.textMuted, fontSize: "12px", marginTop: "2px" }}>
                                             <span style={{ color: colors.primary, fontWeight: "600" }}>{item.calories} kcal</span> <br style={{ display: isMobile ? "block" : "none" }}/> {!isMobile && "|"} P: {item.protein}g • C: {item.carbs}g • F: {item.fats}g
                                         </div>
                                     </div>
-                                    <button onClick={() => handleRemoveItem(slot, item.id)} style={{ background: "#FEE2E2", border: "none", color: colors.danger, cursor: "pointer", borderRadius: "50%", width: "32px", height: "32px", display: "flex", alignItems: "center", justifycontent: "center" }}>🗑️</button>
+                                    <button onClick={() => handleRemoveItem(slot, item.id)} style={{ background: "#FEE2E2", border: "none", color: colors.danger, cursor: "pointer", borderRadius: "50%", width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center" }}>🗑️</button>
                                 </div>
                             ))
                         )}
